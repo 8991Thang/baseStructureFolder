@@ -1,25 +1,37 @@
-import logo from "./logo.svg";
 import "./App.css";
-import "./index.css";
+import { Navbar } from "./components/navbar-header/Navbar";
+import { SidebarLeft } from "./components/sidebar-left/Sidebar";
+import { routes } from "./router.config";
+import { Redirect, Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { LoginPage } from "./pages/login/login";
+
 function App() {
+  const reactRouter = () => {
+    return routes.map((route, i) => {
+      return <Route path={route.path} key={i} exact={route.exact} component={route.component}/>;
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link mt-20"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/login" component={LoginPage} />
+        <Redirect from="/" exact to="/login" />
+        <Route path="/">
+          <div className="App min-h-screen flex flex-row">
+            <SidebarLeft />
+            <div className="flex flex-col w-10/12">
+              <Navbar />
+              <Switch>{reactRouter()}</Switch>
+            </div>
+          </div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
+// function RouteWithSubRoutes(route) {
+//   return <Route path={route.path} exact={route.exact}>
+//     <route.component routes={route.routes}/>
+//   </Route>;
+// }
 export default App;
