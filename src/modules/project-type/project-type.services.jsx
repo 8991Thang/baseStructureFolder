@@ -1,4 +1,4 @@
-import { getApiAxios } from "../../services/axios-get-list-api.services";
+import { getApiAxios } from "../../services/axios-get--api.services";
 import { getProjectTypePending, getProjectTypeSucess } from "./project-type.reducers";
 
 export const getDataProjectTypeFromApi = () => dispatch => {

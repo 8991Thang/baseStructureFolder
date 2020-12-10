@@ -32,7 +32,7 @@ export const TableCustomers = () => {
               {listCustomers.data.map(projectType => {
                 return (
                   <RowTable
-                    link={"/customers/" + projectType._id}
+                    link={"/customers/details/" + projectType._id}
                     key={projectType._id}
                     number={projectType.priorityNumber}
                     type={projectType.name}

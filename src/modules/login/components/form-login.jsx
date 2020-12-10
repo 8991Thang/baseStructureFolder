@@ -12,8 +12,9 @@ export const FormLogin = () => {
     // console.log(token);
   }, [token]);
   const onSubmit = async dataInput => {
+    sessionStorage.removeItem("token");
     await dispatch(getTokenUserLogin(dataInput));
-    setTimeout(() => { history.push("/project-type"); }, 1000);
+    history.push("/project-type");
   };
   return (
     <div className="bg-blue-400 h-screen w-screen">

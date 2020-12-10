@@ -1,8 +1,9 @@
 import Axios from "axios";
-import { getTokenSesion } from "../utils/get-token-sesion";
 import { checkStatusResponRedirectRouter } from "../utils/check-error-call-api";
-const token = getTokenSesion("token");
-export const getDetailsApiAxios = async (api, dispatch, getPending, getSuccess, getError) => {
+import { getTokenSesion } from "../utils/get-token-sesion";
+
+export const getApiAxios = async (api, dispatch, getPending, getSuccess, getError) => {
+  const token = await getTokenSesion("token");
   if (!token) checkStatusResponRedirectRouter();
   dispatch(getPending());
   try {
@@ -13,6 +14,7 @@ export const getDetailsApiAxios = async (api, dispatch, getPending, getSuccess, 
     dispatch(getSuccess(data));
   }
   catch (error) {
+    checkStatusResponRedirectRouter();
     dispatch(getError());
   }
 };
