@@ -1,4 +1,4 @@
-import { FormCreat } from "../../components/form-create/form-create";
+import { FormCreate } from "../../components/form-create/form-create";
 import { TitlePage } from "../../components/title-page/title-page";
 import { creatNewProjectType } from "../../modules/project-type/project-type.services";
 
@@ -7,7 +7,7 @@ export const CreateCustomers = () => {
     <div className="mt-10">
       <TitlePage content="ADD Customers " />
       <div className="flex justify-center">
-        <FormCreat name="Customers" action={creatNewProjectType} />
+        <FormCreate name="Customers" action={creatNewProjectType} />
       </div>
     </div>
   );

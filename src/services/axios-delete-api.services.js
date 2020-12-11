@@ -3,18 +3,18 @@ import { checkStatusResponRedirectRouter } from "../utils/check-error-call-api";
 import { getTokenSesion } from "../utils/get-token-sesion";
 
 const token = getTokenSesion("token");
-export const deleteApiAxios = async (api, dispatch, getPending, getSuccess, getError) => {
+export const deleteApiAxios = async (api, dispatch, deletePending,
+  delteteSuccess, delteteError, id) => {
   if (!token) checkStatusResponRedirectRouter();
-  dispatch(getPending());
+  dispatch(deletePending());
   try {
     const respon = await Axios.delete(api, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const { data } = respon.data;
-    dispatch(getSuccess(data));
+    if (respon.status === 200)dispatch(delteteSuccess(id));
   }
   catch (error) {
     checkStatusResponRedirectRouter();
-    dispatch(getError());
+    dispatch(delteteError());
   }
 };

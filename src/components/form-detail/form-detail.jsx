@@ -24,9 +24,9 @@ export const FormDetailCustomers = ({
         <div className="px-10 py-5 text-gray-600">
           Description : <b>{description}</b>
         </div>
-        <div className="px-10 py-5 text-gray-600">
+        {priority ? <div className="px-10 py-5 text-gray-600">
           Priority : <span className="text-xl ml-2">{priority}</span>
-        </div>
+        </div> : null}
         <div className="px-10 py-5 text-gray-600">
           Status :{" "}
           {status === "active" ? (

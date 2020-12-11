@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { PaginationProjectType } from "../../../components/pagination-page/pagination-project-type";
+import { useDispatch, useSelector } from "react-redux";
+import { Pagination } from "../../../components/pagination-page/pagination";
 import RowTable from "../../../components/row-table/row-table";
-// import { getListTechStack } from "../tech-stack.services";
+import { getListTechStack } from "../tech-stack.services";
+
 export const TableTechStack = () => {
   const listTeckStack = useSelector(state => state.techStack);
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getListTechStack());
+    dispatch(getListTechStack());
   }, []);
   return (
     <div>
@@ -28,20 +29,21 @@ export const TableTechStack = () => {
               </tr>
             </thead>
             <tbody>
-              {listTeckStack.data.map(projectType => {
+              {listTeckStack.data.map((techStack, i) => {
                 return (
                   <RowTable
-                    key={projectType.name}
-                    number={projectType.priorityNumber}
-                    type={projectType.name}
-                    description={projectType.description}
-                    status={projectType.status}
+                    link={"/tech-stack/details/" + techStack._id}
+                    key={techStack._id}
+                    number={i + 1}
+                    type={techStack.name}
+                    description={techStack.description}
+                    status={techStack.status}
                   />
                 );
               })}
             </tbody>
           </table>
-          <PaginationProjectType />
+          <Pagination />
         </div>
       )}
     </div>

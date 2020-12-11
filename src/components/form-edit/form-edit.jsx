@@ -52,29 +52,35 @@ export const FormEdit = ({ name, onSubmit, setUpdate, valueName, valueDes,
                 </div>
               </div>
             </div>
-            <div className="w-3/4">
-              <div className="inline-block mt-2 w-1/2 pr-1">
-                <label className="text-sm text-gray-600 mb-2" htmlFor="priority">
-                  Priority
-                </label>
-                <select
-                  ref={dataForm}
-                  defaultValue={valuePri}
-                  className="w-full outline-none px-3 py-4 text-gray-700 bg-gray-200 rounded"
-                  id="priority"
-                  name="priorityNumber"
-                  type="text"
-                  required
-                  placeholder="Priority"
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-              <div className="inline-block mt-2 w-1/2 pr-1">
+            <div className={valuePri ? "w-3/4" : "w-full"}>
+              {valuePri ? (
+                <div className="inline-block mt-2 w-1/2 pr-1">
+                  <label className="text-sm text-gray-600 mb-2" htmlFor="priority">
+                    Priority
+                  </label>
+                  <select
+                    ref={dataForm}
+                    defaultValue={valuePri}
+                    className="w-full outline-none px-3 py-4 text-gray-700 bg-gray-200 rounded"
+                    id="priority"
+                    name="priorityNumber"
+                    type="text"
+                    required
+                    placeholder="Priority"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              ) : null}
+              <div
+                className={
+                  valuePri ? "inline-block mt-2 w-1/2 pr-1" : "inline-block mt-2 w-3/4 pr-1"
+                }
+              >
                 <label className="text-sm text-gray-600 mb-2" htmlFor="status">
                   Status
                 </label>

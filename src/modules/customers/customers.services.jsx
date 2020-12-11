@@ -1,11 +1,9 @@
 import { deleteApiAxios } from "../../services/axios-delete-api.services";
-import { getApiAxios } from "../../services/axios-get--api.services";
+import { getApiAxios } from "../../services/axios-get-api.services";
 import { putApiAxios } from "../../services/axios-put-api.services";
 import {
-  getCustomersDetails,
-  getCustomersError,
-  getCustomersPending,
-  getCustomersSuccess,
+  getCustomersDetails, getCustomersError,
+  getCustomersPending, getCustomersSuccess,
   sendRequestCustomersError,
   sendRequestCustomersPending,
   sendRequestCustomersSuccess,

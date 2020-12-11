@@ -11,10 +11,10 @@ export const getApiAxios = async (api, dispatch, getPending, getSuccess, getErro
       headers: { Authorization: `Bearer ${token}` },
     });
     const { data } = respon.data;
-    dispatch(getSuccess(data));
+    await dispatch(getSuccess(data));
   }
   catch (error) {
     checkStatusResponRedirectRouter();
-    dispatch(getError());
+    dispatch(getError(error));
   }
 };

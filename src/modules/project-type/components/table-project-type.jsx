@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PaginationProjectType } from "../../../components/pagination-page/pagination-project-type";
+import { Pagination } from "../../../components/pagination-page/pagination";
 import RowTable from "../../../components/row-table/row-table";
 import { getDataProjectTypeFromApi } from "../project-type.services";
 export const TableProjectType = () => {
@@ -29,11 +29,12 @@ export const TableProjectType = () => {
               </tr>
             </thead>
             <tbody>
-              {listProjectTypes.data.map(projectType => {
+              {listProjectTypes.data.map((projectType, i) => {
                 return (
                   <RowTable
-                    key={projectType.name}
-                    number={projectType.priorityNumber}
+                    link={"/project-type/details/" + projectType._id}
+                    key={projectType._id}
+                    number={i + 1}
                     type={projectType.name}
                     description={projectType.description}
                     priority={projectType.priorityNumber}
@@ -43,7 +44,7 @@ export const TableProjectType = () => {
               })}
             </tbody>
           </table>
-          <PaginationProjectType />
+          <Pagination />
         </div>
       )}
     </div>

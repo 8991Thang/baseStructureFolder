@@ -1,7 +1,7 @@
 import { DetailsCustomers } from "../../modules/customers/components/detail-customers";
 export const CustomersDetails = () => {
   return (
-    <div className="">
+    <div >
       <DetailsCustomers/>
     </div>
   );

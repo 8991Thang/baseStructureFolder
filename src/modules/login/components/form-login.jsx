@@ -12,7 +12,6 @@ export const FormLogin = () => {
     // console.log(token);
   }, [token]);
   const onSubmit = async dataInput => {
-    sessionStorage.removeItem("token");
     await dispatch(getTokenUserLogin(dataInput));
     history.push("/project-type");
   };

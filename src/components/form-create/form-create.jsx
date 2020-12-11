@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-export const FormCreat = ({ name, action }) => {
+import { useHistory } from "react-router-dom";
+export const FormCreate = ({ name, action, link }) => {
   const { register: dataForm, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const onSubmit = data => {
+  const history = useHistory();
+  const onSubmit = async data => {
     data.priorityNumber = parseInt(data.priorityNumber);
-    dispatch(action(data));
+    await dispatch(action(data));
+    history.push(link);
   };
   return (
     <div className="leading-loose w-6/12">
